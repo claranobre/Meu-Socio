@@ -10,6 +10,7 @@ import javax.swing.JPanel;
 
 public class UI {
 	private JFrame janela;
+	private JFrame sjanela;
 	private Container painelPrincipal;
 
 	/**
@@ -17,14 +18,20 @@ public class UI {
 	 */
 
 	private void preparaJanela() {
-		janela = new JFrame("Janela");
+		janela = new JFrame("Meu Socio");
 		janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		sjanela = new JFrame("Feed");
+		sjanela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
 	private void mostraJanela() {
 		janela.pack();
 		janela.setSize(540, 540);
 		janela.setVisible(true);
+
+		sjanela.pack();
+		sjanela.setSize(540, 540);
 	}
 
 	public static void main(String[] args) {
@@ -34,8 +41,7 @@ public class UI {
 	private void montaTela(){
 		preparaJanela();
 		preparaPainelPrincipal();
-		preparaBotaoCarregar();
-		preparaBotaoSair();
+		preparaBotao();
 		mostraJanela();
 	}
 	
@@ -44,25 +50,16 @@ public class UI {
 		janela.add(painelPrincipal);
 	}
 
-	private void preparaBotaoCarregar() {
-		JButton botaoCarregar = new JButton("Carregar XML");
-		botaoCarregar.addActionListener(new ActionListener() {
+	private void preparaBotao() {
+		JButton botaoEntrar = new JButton("Entrar");
+		botaoEntrar.setBounds(130,100,270,400);
+		
+		botaoEntrar.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				//new EscolhedorDeXML().escolhe();
+				sjanela.setVisible(true);
 			}
 		});
-		painelPrincipal.add(botaoCarregar);
-	}
-
-	private void preparaBotaoSair() {
-		JButton botaoSair = new JButton("Sair");
-		botaoSair.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				System.exit(0);
-			}
-		});
-		painelPrincipal.add(botaoSair);
+		painelPrincipal.add(botaoEntrar);
 	}
 }
