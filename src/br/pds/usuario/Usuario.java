@@ -9,8 +9,7 @@ public class Usuario {
 	private String endereco;
 	private String telefone;
 	
-	public void setUsuario(int ru, String login, String senha, String nome, String email, 
-							String endereco, String telefone){
+	public void setUsuario(int ru, String login, String senha, String nome, String email, String endereco, String telefone){
 		this.ru = ru;
 		this.login = login;
 		this.senha = senha;
