@@ -2,11 +2,11 @@ package br.pds.usuario;
 import java.util.ArrayList;
 
 public class Cadastro extends Usuario{
+	public boolean checker = true;
 
     private ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
     
     public void novoSocio(String login, String senha, String nome, String email, String endereco, String telefone){
-        public boolean checker = true;
         for(int i = 0; i < usuarios.size(); i++){
             if(usuarios.get(i).getLogin().equals(login) || usuarios.get(i).getEmail().equals(email)){
                 //Alterar para lançar uma exceção
