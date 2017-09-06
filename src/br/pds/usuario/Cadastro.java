@@ -2,11 +2,11 @@ package br.pds.usuario;
 import java.util.ArrayList;
 
 public class Cadastro extends Usuario{
-	public boolean checker = true;
+	public static boolean checker = true;
 
-    private ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
+    private static ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
     
-    public void novoSocio(String login, String senha, String nome, String email, String endereco, String telefone){
+    public static void novoSocio(String login, String senha, String nome, String email, String endereco, String telefone){
         for(int i = 0; i < usuarios.size(); i++){
             if(usuarios.get(i).getLogin().equals(login) || usuarios.get(i).getEmail().equals(email)){
                 //Alterar para lançar uma exceção
@@ -26,15 +26,23 @@ public class Cadastro extends Usuario{
     }
 
     //Classe apenas para listar os usuarios, e seus respectivos dados acessíveis
-    public void listarSocios(){
+    public static void listarSocios(){
         for(int i = 0; i < usuarios.size(); i++){
-            int ru = usuarios.get(i).getRu();
+            int ru = usuarios.get(i).getRu() + 1;
             String login = usuarios.get(i).getLogin();
             String nome = usuarios.get(i).getNome();
             String email = usuarios.get(i).getEmail();
             String endereco = usuarios.get(i).getEndereco();
             String telefone = usuarios.get(i).getTelefone();
-            System.out.println("Registro Unico: " + ru + "Login: " + login + "Nome: " + nome + "Email: " + email + "Endereco: " + endereco + "Telefone: " + telefone);
+            System.out.println("Registro Unico: " + ru + "| Login: " + login + "| Nome: " + nome + "| Email: " + email + "| Endereco: " + endereco + "| Telefone: " + telefone);
         }
+    }
+    
+    public static void main(String[] args){
+    	//Testes para chamadas de botões
+    	novoSocio("gil", "123", "Felipe Dantas", "felipegdantas@gmail.com", "ufrn", "20101419");
+    	novoSocio("clara", "321", "Ana Clara", "aclaranobre@gmail.com", "ufrn", "telefone");
+    	listarSocios();
+    	
     }
 }
