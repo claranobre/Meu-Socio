@@ -17,7 +17,7 @@ public class UI extends JFrame implements ActionListener {
 	
 	public UI() {
 		
-		super("Meu Sócio");
+		super("Meu Sï¿½cio");
 		
 		janela = new JFrame("Feed");
 		janela.pack();

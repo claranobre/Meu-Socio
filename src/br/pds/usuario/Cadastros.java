@@ -1,13 +1,12 @@
 package br.pds.usuario;
 import java.util.ArrayList;
 
-public class Cadastro extends Usuario{
-	public static boolean checker = true;
-
+public class Cadastros extends Usuario{
     private static ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
     
-    public static void novoSocio(String login, String senha, String nome, String email, String endereco, String telefone){
-        for(int i = 0; i < usuarios.size(); i++){
+    public static void addSocio(String login, String senha, String nome, String email, String endereco, String telefone){
+        boolean checker = true;
+    	for(int i = 0; i < usuarios.size(); i++){
             if(usuarios.get(i).getLogin().equals(login) || usuarios.get(i).getEmail().equals(email)){
                 //Alterar para lançar uma exceção
                 System.out.println("Login ou Email ja utilizado");
@@ -16,7 +15,7 @@ public class Cadastro extends Usuario{
         }
         if(checker){
             Usuario cadastrar = new Usuario();
-            int ru = usuarios.size();
+            int ru = usuarios.size()+ 1;
             cadastrar.setUsuario(ru, login, senha, nome, email, endereco, telefone);
             usuarios.add(cadastrar);
         }
@@ -25,24 +24,44 @@ public class Cadastro extends Usuario{
         }
     }
 
+    public void removeSocio(String login){
+    	
+    }
+    
+
     //Classe apenas para listar os usuarios, e seus respectivos dados acessíveis
     public static void listarSocios(){
         for(int i = 0; i < usuarios.size(); i++){
-            int ru = usuarios.get(i).getRu() + 1;
-            String login = usuarios.get(i).getLogin();
-            String nome = usuarios.get(i).getNome();
-            String email = usuarios.get(i).getEmail();
-            String endereco = usuarios.get(i).getEndereco();
-            String telefone = usuarios.get(i).getTelefone();
-            System.out.println("Registro Unico: " + ru + "| Login: " + login + "| Nome: " + nome + "| Email: " + email + "| Endereco: " + endereco + "| Telefone: " + telefone);
+            imprimeDados(usuarios.get(i), i);            
         }
     }
     
-    public static void main(String[] args){
-    	//Testes para chamadas de botões
-    	novoSocio("gil", "123", "Felipe Dantas", "felipegdantas@gmail.com", "ufrn", "20101419");
-    	novoSocio("clara", "321", "Ana Clara", "aclaranobre@gmail.com", "ufrn", "telefone");
-    	listarSocios();
+    //realiza a busca de um login no banco de socios
+    public static Usuario buscarSocio(String login){
+    	boolean founded = false;
+    	Usuario user = new Usuario();
+    	for(int i = 0; i < usuarios.size(); i++){
+    		if(login.equals(usuarios.get(i).getLogin())){
+    			founded = true;
+    			user = usuarios.get(i);
+    			imprimeDados(usuarios.get(i), i);
+    		}
+        }
     	
+    	if(!founded){
+    		System.out.println("Usuario não encontrado!");
+    		return null;
+    	} else {
+    		return user;
+    	}
+    }
+
+    //lista dados do usuario 
+    public static void imprimeDados(Usuario user, int i){
+    	System.out.println("Registro Unico: " + usuarios.get(i).getRu() + "| Login: " + 
+        		usuarios.get(i).getLogin() + "| Nome: " + usuarios.get(i).getNome() + 
+        		"| Email: " + usuarios.get(i).getEmail() + "| Endereco: " + 
+        		usuarios.get(i).getEndereco() + "| Telefone: " + usuarios.get(i).getTelefone());
     }
 }
+
