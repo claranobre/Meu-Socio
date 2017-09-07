@@ -1,6 +1,6 @@
 package br.pds.usuario;
 
-public class Main extends Cadastro{
+public class Main extends Cadastros{
 
 	public static void main(String[] args) {
 		//Testes para chamadas de botões
