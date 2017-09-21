@@ -17,6 +17,8 @@ import android.view.MenuItem;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.meu.socio.meusocio.Noticia;
 import com.meu.socio.meusocio.NoticiaAdapter;
 import com.meu.socio.meusocio.R;
@@ -30,7 +32,6 @@ public class FeedNoticiasActivity extends AppCompatActivity
     ArrayList<Noticia> noticias = new ArrayList<Noticia>();
 
     private Bitmap bitmap;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
