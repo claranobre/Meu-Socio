@@ -69,4 +69,3 @@ public class Cadastro extends Usuario{
                 usuarios.get(i).getEndereco() + "| Telefone: " + usuarios.get(i).getTelefone());
     }
 }
-}
