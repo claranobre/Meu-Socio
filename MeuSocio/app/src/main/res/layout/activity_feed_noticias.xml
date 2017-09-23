@@ -19,7 +19,7 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
-        app:menu="@menu/activity_feed_noticias_drawer"/>
-<!--    app:headerLayout="@layout/nav_header_feed_noticias" -->
+        app:headerLayout="@layout/nav_header_feed_noticias"
+        app:menu="@menu/activity_feed_noticias_drawer" />
 
 </android.support.v4.widget.DrawerLayout>
