@@ -146,13 +146,6 @@ public class FeedNoticiasActivity extends AppCompatActivity
                 break;
             case R.id.nav_slideshow:
                 break;
-
-<<<<<<< HEAD
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
-=======
             case R.id.nav_manage:
                 break;
         }
@@ -161,7 +154,6 @@ public class FeedNoticiasActivity extends AppCompatActivity
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.replace(R.id.content_feed_noticias, fragment);
             ft.commit();
->>>>>>> 6b3ea42b51053231da9cc3aa453f5a9c74b7a518
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
