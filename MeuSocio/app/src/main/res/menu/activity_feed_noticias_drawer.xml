@@ -3,6 +3,7 @@
 
     <group android:checkableBehavior="single">
         <item
+<<<<<<< HEAD
             android:id="@+id/nav_camera"
             android:icon="@drawable/ic_menu_camera"
             android:title="Import" />
@@ -10,6 +11,15 @@
             android:id="@+id/nav_gallery"
             android:icon="@drawable/ic_menu_gallery"
             android:title="Gallery" />
+=======
+            android:id="@+id/loginID"
+            android:icon="@drawable/ic_account_circle_black_24dp"
+            android:title="Login" />
+        <item
+            android:id="@+id/cadastroID"
+            android:icon="@drawable/ic_add_circle_outline_black_24dp"
+            android:title="Cadastro" />
+>>>>>>> 6b3ea42b51053231da9cc3aa453f5a9c74b7a518
         <item
             android:id="@+id/nav_slideshow"
             android:icon="@drawable/ic_menu_slideshow"
