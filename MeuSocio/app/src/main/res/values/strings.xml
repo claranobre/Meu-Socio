@@ -21,4 +21,5 @@
     </string>
     <string name="title_activity_formulario">FormularioActivity</string>
     <string name="title_activity_lista_usuarios">ListaUsuariosActivity</string>
+    <string name="Cadastro" />
 </resources>

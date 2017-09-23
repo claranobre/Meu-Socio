@@ -35,10 +35,6 @@
             android:name=".LoginActivity"
             android:label="@string/title_activity_login" />
         <activity
-            android:name=".Activities.FormularioActivity"
-            android:label="@string/title_activity_formulario"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
             android:name=".Activities.ListaUsuariosActivity"
             android:label="@string/title_activity_lista_usuarios"
             android:theme="@style/AppTheme.NoActionBar"></activity>

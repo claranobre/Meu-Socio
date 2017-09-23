@@ -1,5 +1,6 @@
 package com.meu.socio.meusocio.Activities;
 
+
 import java.util.ArrayList;
 
 /**
@@ -25,7 +26,7 @@ public class Cadastro extends Usuario{
             usuarios.add(cadastrar);
         }
         else{
-            System.out.println("Erro ao efetuar o cadastro");
+            System.out.println("Erro ao efetuar o cadastro_fragment");
         }
     }
 
