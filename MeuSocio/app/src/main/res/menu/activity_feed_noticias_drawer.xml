@@ -3,13 +3,13 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_camera"
+            android:id="@+id/loginID"
             android:icon="@drawable/ic_account_circle_black_24dp"
             android:title="Login" />
         <item
-            android:id="@+id/nav_gallery"
+            android:id="@+id/cadastroID"
             android:icon="@drawable/ic_add_circle_outline_black_24dp"
-            android:title="Cadastre-se" />
+            android:title="Cadastro" />
         <item
             android:id="@+id/nav_slideshow"
             android:icon="@drawable/ic_menu_slideshow"

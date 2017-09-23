@@ -1,10 +1,13 @@
 package com.meu.socio.meusocio.Activities;
 
+import android.app.Fragment;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -123,28 +126,42 @@ public class FeedNoticiasActivity extends AppCompatActivity
         return super.onOptionsItemSelected(item);
     }
 
-    @SuppressWarnings("StatementWithEmptyBody")
-    @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
-        int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+    public void escolheTela(int id) {
+        android.support.v4.app.Fragment fragment = null;
 
-        } else if (id == R.id.nav_slideshow) {
+        switch (id) {
+            case R.id.loginID:
+                fragment = new LoginFragment();
+                break;
+            case R.id.cadastroID:
+                fragment = new CadastroFragment();
+                break;
+            case R.id.nav_slideshow:
+                break;
 
-        } else if (id == R.id.nav_manage) {
+            case R.id.nav_manage:
+                break;
+        }
 
-        }/* else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
-        }*/
+        if(fragment != null) {
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.content_feed_noticias, fragment);
+            ft.commit();
+        }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
+    }
+
+
+    @SuppressWarnings("StatementWithEmptyBody")
+    @Override
+    public boolean onNavigationItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        escolheTela(id);
+
         return true;
     }
 }
