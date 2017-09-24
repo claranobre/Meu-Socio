@@ -5,45 +5,22 @@ package com.meu.socio.meusocio;
  */
 
 public class Usuario {
-    private int ru;
-    private String login;
-    private String senha;
+    private String id;
     private String nome;
     private String email;
-    private String endereco;
     private String telefone;
+    private String login;
+    private String senha;
 
-    public void setUsuario(int ru, String login, String senha, String nome, String email, String endereco, String telefone){
-        this.ru = ru;
-        this.login = login;
-        this.senha = senha;
-        this.nome = nome;
-        this.email = email;
-        this.endereco = endereco;
-        this.telefone = telefone;
-    }
-    public void setRu(int ru) {
-        this.ru = ru;
+    public void setUsuario(){
     }
 
-    public int getRu() {
-        return this.ru;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public void setLogin(String login) {
-        this.login = login;
-    }
-
-    public String getLogin() {
-        return this.login;
-    }
-
-    public void setSenha(String senha) {
-        this.senha = senha;
-    }
-
-    public String getSenha() {
-        return this.senha;
+    public String getId() {
+        return this.id;
     }
 
     public void setNome(String nome) {
@@ -62,19 +39,27 @@ public class Usuario {
         return this.email;
     }
 
-    public void setEndereco(String endereco) {
-        this.endereco = endereco;
-    }
-
-    public String getEndereco() {
-        return this.endereco;
-    }
-
     public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
 
     public String getTelefone() {
         return this.telefone;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public String getLogin() {
+        return this.login;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+
+    public String getSenha() {
+        return this.senha;
     }
 }
