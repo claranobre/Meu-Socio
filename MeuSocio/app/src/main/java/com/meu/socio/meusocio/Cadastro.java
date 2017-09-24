@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class Cadastro extends Usuario{
     private static ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
 
-    public static void addSocio(String login, String senha, String nome, String email, String endereco, String telefone){
+    public static void addSocio(String id, String nome, String email, String telefone, String login, String senha){
         boolean checker = true;
         for(int i = 0; i < usuarios.size(); i++){
             if(usuarios.get(i).getLogin().equals(login) || usuarios.get(i).getEmail().equals(email)){
@@ -22,11 +22,16 @@ public class Cadastro extends Usuario{
         if(checker){
             Usuario cadastrar = new Usuario();
             int ru = usuarios.size()+ 1;
-            cadastrar.setUsuario(ru, login, senha, nome, email, endereco, telefone);
+            cadastrar.setId(id);
+            cadastrar.setNome(nome);
+            cadastrar.setEmail(email);
+            cadastrar.setTelefone(telefone);
+            cadastrar.setLogin(login);
+            cadastrar.setSenha(senha);
             usuarios.add(cadastrar);
         }
         else{
-            System.out.println("Erro ao efetuar o cadastro_fragment");
+            System.out.println("Erro ao efetuar o cadastro");
         }
     }
 
@@ -64,9 +69,8 @@ public class Cadastro extends Usuario{
 
     //lista dados do usuario
     public static void imprimeDados(Usuario user, int i){
-        System.out.println("Registro Unico: " + usuarios.get(i).getRu() + "| Login: " +
+        System.out.println("Id: " + usuarios.get(i).getId() + "| Login: " +
                 usuarios.get(i).getLogin() + "| Nome: " + usuarios.get(i).getNome() +
-                "| Email: " + usuarios.get(i).getEmail() + "| Endereco: " +
-                usuarios.get(i).getEndereco() + "| Telefone: " + usuarios.get(i).getTelefone());
+                "| Email: " + usuarios.get(i).getEmail() + "| Telefone: " + usuarios.get(i).getTelefone());
     }
 }
