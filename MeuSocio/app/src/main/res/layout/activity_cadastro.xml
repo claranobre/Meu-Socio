@@ -10,38 +10,45 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:hint="ID"
+            android:id="@+id/cadastro_id"/>
+        <EditText
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:hint="Nome"
-            android:id="@+id/formulario_nome"/>
+            android:id="@+id/cadastro_nome"/>
+
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="ID"
-            android:id="@+id/formulario_id"/>
+            android:hint="E-mail"
+            android:id="@+id/cadastro_email"/>
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Telefone"
-            android:id="@+id/formulario_telefone"/>
+            android:id="@+id/cadastro_telefone"/>
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Usuario"
-            android:id="@+id/formulario_usuario"/>
+            android:id="@+id/cadastro_usuario"/>
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Senha"
-            android:id="@+id/formulario_senha"/>
+            android:id="@+id/cadastro_senha"/>
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Salvar"
-            android:id="@+id/formulario_salvar"/>
+            android:id="@+id/cadastro_salvar"/>
 
 
     </LinearLayout>

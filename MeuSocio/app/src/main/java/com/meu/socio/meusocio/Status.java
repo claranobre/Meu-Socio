@@ -1,4 +1,4 @@
-package com.meu.socio.meusocio.Activities;
+package com.meu.socio.meusocio;
 
 /**
  * Created by clara on 9/20/17.

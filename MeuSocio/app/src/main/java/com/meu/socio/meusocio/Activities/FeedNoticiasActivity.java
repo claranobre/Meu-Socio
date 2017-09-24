@@ -33,13 +33,15 @@ public class FeedNoticiasActivity extends AppCompatActivity
 
     private NoticiaAdapter adaptadorLista;
     ArrayList<Noticia> noticias = new ArrayList<Noticia>();
+    private DatabaseReference  refe = FirebaseDatabase.getInstance().getReference();
 
-    private Bitmap bitmap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_feed_noticias);
+
+        refe.child("Socio").setValue("Pedro");
 
         //Navigation Drawer part
 
@@ -132,12 +134,15 @@ public class FeedNoticiasActivity extends AppCompatActivity
         switch (id) {
             case R.id.loginID:
 //                fragment = new LoginFragment();
-                Intent intent = new Intent(FeedNoticiasActivity.this,
+                Intent intentLogin = new Intent(FeedNoticiasActivity.this,
                         LoginActivity.class);
-                startActivity(intent);
+                startActivity(intentLogin);
                 break;
             case R.id.cadastroID:
 //                fragment = new CadastroFragment();
+                Intent intentCadastro = new Intent(FeedNoticiasActivity.this,
+                        CadastroActivity.class);
+                startActivity(intentCadastro);
                 break;
             case R.id.nav_slideshow:
                 break;

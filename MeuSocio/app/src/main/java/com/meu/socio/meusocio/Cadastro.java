@@ -1,4 +1,4 @@
-package com.meu.socio.meusocio.Activities;
+package com.meu.socio.meusocio;
 
 
 import java.util.ArrayList;

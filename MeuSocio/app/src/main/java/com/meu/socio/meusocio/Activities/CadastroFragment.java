@@ -14,11 +14,11 @@ import com.meu.socio.meusocio.R;
 
 public class CadastroFragment extends android.support.v4.app.Fragment {
 
-    @Nullable
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.cadastro_fragment, container, false);
-    }
+//    @Nullable
+//    @Override
+//    public View onCreateView(LayoutInflater inflater, ViewGroup container, @Nullable Bundle savedInstanceState) {
+////        return inflater.inflate(R.layout.cadastro_fragment, container, false);
+//    }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
