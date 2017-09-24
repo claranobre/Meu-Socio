@@ -46,14 +46,6 @@ public class FeedNoticiasActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -139,10 +131,13 @@ public class FeedNoticiasActivity extends AppCompatActivity
 
         switch (id) {
             case R.id.loginID:
-                fragment = new LoginFragment();
+//                fragment = new LoginFragment();
+                Intent intent = new Intent(FeedNoticiasActivity.this,
+                        LoginActivity.class);
+                startActivity(intent);
                 break;
             case R.id.cadastroID:
-                fragment = new CadastroFragment();
+//                fragment = new CadastroFragment();
                 break;
             case R.id.nav_slideshow:
                 break;
@@ -152,7 +147,7 @@ public class FeedNoticiasActivity extends AppCompatActivity
 
         if(fragment != null) {
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-            ft.replace(R.id.content_feed_noticias, fragment);
+            ft.replace(R.id.content_feed_noticias, fragment, "Fragmento");
             ft.commit();
         }
 
