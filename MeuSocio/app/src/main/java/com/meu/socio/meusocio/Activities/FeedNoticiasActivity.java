@@ -20,6 +20,7 @@ import android.view.MenuItem;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.meu.socio.meusocio.Noticia;
@@ -141,10 +142,6 @@ public class FeedNoticiasActivity extends AppCompatActivity
                 Intent intentCadastro = new Intent(FeedNoticiasActivity.this,
                         CadastroActivity.class);
                 startActivity(intentCadastro);
-                break;
-            case R.id.nav_slideshow:
-                break;
-            case R.id.nav_manage:
                 break;
         }
 

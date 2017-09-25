@@ -15,7 +15,7 @@ import com.meu.socio.meusocio.Usuario;
 import DAO.CadastroDAO;
 
 public class CadastroActivity extends AppCompatActivity {
-    private CadastroHelper helper;
+
     private CadastroDAO cadastro;
 
 
@@ -34,6 +34,8 @@ public class CadastroActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro);
 
+        cadastro = new CadastroDAO();
+
         campoId = (EditText) findViewById(R.id.cadastro_id);
         campoNome = (EditText) findViewById(R.id.cadastro_nome);
         campoEmail = (EditText) findViewById(R.id.cadastro_email);
@@ -42,29 +44,14 @@ public class CadastroActivity extends AppCompatActivity {
         campoSenha = (EditText) findViewById(R.id.cadastro_senha);
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        Button botaoCadastro = (Button) findViewById(R.id.cadastro_salvar);
-//        Toast.makeText(CadastroActivity.this, "Cadastro " + usuario.getNome() + " feito com sucesso", Toast.LENGTH_SHORT).show();
-//        botaoCadastro.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Usuario usuario = helper.dadosUsuario();
-//                Toast.makeText(CadastroActivity.this, "Cadastro " + usuario.getNome() + " feito com sucesso", Toast.LENGTH_SHORT).show();
-//                cadastro.cadastrarUsuario(usuario.getEmail(), usuario.getSenha());
-//            }
-//        });
-        finish();
-
-        return super.onOptionsItemSelected(item);
-    }
-
     public void cadastro(View view) {
         Usuario usuario = new Usuario();
+        usuario.setNome(campoNome.toString());
         usuario.setEmail(campoEmail.toString());
         usuario.setSenha(campoSenha.toString());
-        Toast.makeText(CadastroActivity.this, "Cadastro " + usuario.getNome() + " feito com sucesso", Toast.LENGTH_SHORT).show();
         cadastro.cadastrarUsuario(usuario.getEmail(), usuario.getSenha());
+        Toast.makeText(CadastroActivity.this, "Usuário cadastrado", Toast.LENGTH_LONG).show();
+        finish();
     }
 
 
