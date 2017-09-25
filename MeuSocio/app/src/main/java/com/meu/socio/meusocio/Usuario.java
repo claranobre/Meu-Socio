@@ -12,6 +12,15 @@ public class Usuario {
     private String login;
     private String senha;
 
+    public Usuario() {
+        id = "null";
+        nome = "null";
+        email = "null";
+        telefone = "null";
+        login = "null";
+        senha = "null";
+    }
+
     public void setUsuario(){
     }
 

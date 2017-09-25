@@ -21,7 +21,6 @@ public class Cadastro extends Usuario{
         }
         if(checker){
             Usuario cadastrar = new Usuario();
-            int ru = usuarios.size()+ 1;
             cadastrar.setId(id);
             cadastrar.setNome(nome);
             cadastrar.setEmail(email);

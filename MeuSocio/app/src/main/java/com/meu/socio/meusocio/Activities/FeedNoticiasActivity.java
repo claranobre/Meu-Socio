@@ -33,7 +33,6 @@ public class FeedNoticiasActivity extends AppCompatActivity
 
     private NoticiaAdapter adaptadorLista;
     ArrayList<Noticia> noticias = new ArrayList<Noticia>();
-    private DatabaseReference  refe = FirebaseDatabase.getInstance().getReference();
 
 
     @Override
@@ -41,7 +40,6 @@ public class FeedNoticiasActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_feed_noticias);
 
-        refe.child("Socio").setValue("Pedro");
 
         //Navigation Drawer part
 
