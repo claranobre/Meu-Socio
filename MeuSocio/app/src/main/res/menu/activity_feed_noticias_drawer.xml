@@ -10,6 +10,11 @@
             android:id="@+id/cadastroID"
             android:icon="@drawable/ic_add_circle_outline_black_24dp"
             android:title="Cadastro" />
+        <item
+            android:id="@+id/parceirosID"
+            android:icon="@drawable/ic_account_circle_black_24dp"
+            android:title="Parceiros" />
+
     </group>
 
 </menu>
