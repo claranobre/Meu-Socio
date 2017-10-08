@@ -19,6 +19,7 @@ tools:showIn="@layout/app_bar_feed_noticias"
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:id="@+id/rss_feed"
             android:text="Feed de Notícias"
             android:layout_gravity="top|center"
             android:textSize="20dp"
