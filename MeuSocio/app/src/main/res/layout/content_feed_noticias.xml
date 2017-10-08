@@ -10,7 +10,7 @@ android:id="@+id/content_feed_noticias"
 app:layout_behavior="@string/appbar_scrolling_view_behavior"
 tools:context="com.meu.socio.meusocio.Activities.FeedNoticiasActivity"
 tools:showIn="@layout/app_bar_feed_noticias"
->
+android:background="@drawable/chelsea" >
 
     <ScrollView
         android:layout_width="match_parent"
