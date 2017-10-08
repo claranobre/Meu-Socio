@@ -1,5 +1,9 @@
 package com.meu.socio.meusocio;
 
+import com.google.firebase.database.Exclude;
+
+import DAO.CadastroDAO;
+
 /**
  * Created by clara on 9/20/17.
  */
@@ -13,21 +17,17 @@ public class Usuario {
     private String senha;
 
     public Usuario() {
-        id = "null";
-        nome = "null";
-        email = "null";
-        telefone = "null";
-        login = "null";
-        senha = "null";
     }
 
-    public void setUsuario(){
+    public void salvarDados() {
+        CadastroDAO.getFirebase().child("usuarios").child(getId()).setValue( this);
     }
 
     public void setId(String id) {
         this.id = id;
     }
 
+    @Exclude
     public String getId() {
         return this.id;
     }
@@ -44,6 +44,7 @@ public class Usuario {
         this.email = email;
     }
 
+    @Exclude
     public String getEmail() {
         return this.email;
     }
@@ -68,6 +69,7 @@ public class Usuario {
         this.senha = senha;
     }
 
+    @Exclude
     public String getSenha() {
         return this.senha;
     }

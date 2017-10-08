@@ -19,13 +19,13 @@ import java.util.concurrent.Executor;
 
 public class CadastroDAO {
 
-    private DatabaseReference referenciaFirebase;
-    private FirebaseAuth autenticador;
+    private static DatabaseReference referenciaFirebase;
+    private static FirebaseAuth autenticador;
 
     public CadastroDAO() {
     }
 
-    private DatabaseReference getFirebase() {
+    public static DatabaseReference getFirebase() {
         if(referenciaFirebase == null) {
             referenciaFirebase = FirebaseDatabase.getInstance().getReference();
         }
@@ -33,16 +33,12 @@ public class CadastroDAO {
         return referenciaFirebase;
     }
 
-    public FirebaseAuth getFirebaseAutenticador() {
+    public static FirebaseAuth getFirebaseAutenticador() {
         if( autenticador == null) {
             autenticador = FirebaseAuth.getInstance();
         }
 
         return autenticador;
-    }
-
-    public void cadastrarUsuario(String email, String senha) {
-        this.getFirebaseAutenticador().createUserWithEmailAndPassword(email, senha);
     }
 
 }
