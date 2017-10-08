@@ -23,4 +23,7 @@
     <string name="title_activity_lista_usuarios">ListaUsuariosActivity</string>
     <string name="Cadastro" />
     <string name="title_activity_cadastro">CadastroActivity</string>
+    <string name="title_activity_content_feed">ContentFeed</string>
+    <string name="title_activity_feed_content">FeedContent</string>
+    <string name="title_activity_feed_noticias">FeedNoticias</string>
 </resources>
