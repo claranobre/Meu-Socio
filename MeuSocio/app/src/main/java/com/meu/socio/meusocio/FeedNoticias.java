@@ -37,18 +37,16 @@ public class FeedNoticias extends AppCompatActivity {
         });
     }
 
-    @Override
     public View onCreateView(
             LayoutInflater inflater,
             ViewGroup container,
             Bundle savedInstanceState) {
 
-        View rootView = inflater.inflate(R.layout.fragment_main, container, false);
+        View rootView = inflater.inflate(R.layout.noticia_layout, container, false);
         mRssFeed = (TextView) rootView.findViewById(R.id.rss_feed);
         return rootView;
     }
-
-    @Override
+    
     public void onStart() {
         super.onStart();
         InputStream in = null;
