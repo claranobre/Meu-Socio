@@ -8,12 +8,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
-import org.xmlpull.v1.XmlPullParserFactory;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -21,15 +19,14 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 public class FeedNoticias extends AppCompatActivity {
 
     private TextView mRssFeed;
 
-    XmlPullParserFactory factory = XmlPullParserFactory.newInstance();
-    XmlPullParser xpp = factory.newPullParser();
+//    XmlPullParserFactory factory = XmlPullParserFactory.newInstance();
+//    XmlPullParser xpp = factory.newPullParser();
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {

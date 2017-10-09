@@ -1,15 +1,9 @@
 package com.meu.socio.meusocio.Activities;
 
-import android.app.Fragment;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.view.View;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -17,12 +11,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-import com.google.firebase.FirebaseApp;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.meu.socio.meusocio.Noticia;
 import com.meu.socio.meusocio.NoticiaAdapter;
 import com.meu.socio.meusocio.R;
@@ -142,6 +134,12 @@ public class FeedNoticiasActivity extends AppCompatActivity
                 Intent intentCadastro = new Intent(FeedNoticiasActivity.this,
                         CadastroActivity.class);
                 startActivity(intentCadastro);
+                break;
+            case R.id.parceirosID:
+//                fragment = new CadastroFragment();
+                Intent intentParceiro = new Intent(FeedNoticiasActivity.this,
+                        ParceirosActivity.class);
+                startActivity(intentParceiro);
                 break;
         }
 
