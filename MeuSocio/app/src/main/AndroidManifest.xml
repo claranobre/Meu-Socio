@@ -43,7 +43,8 @@
         <activity
             android:name=".FeedNoticias"
             android:label="@string/title_activity_feed_noticias"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".Activities.ParceirosActivity"></activity>
     </application>
 
 </manifest>
