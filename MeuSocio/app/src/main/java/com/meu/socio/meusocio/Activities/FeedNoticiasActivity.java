@@ -1,6 +1,7 @@
 package com.meu.socio.meusocio.Activities;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentTransaction;
@@ -29,6 +30,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -40,12 +42,15 @@ public class FeedNoticiasActivity extends AppCompatActivity
     ArrayList<Noticia> noticias = new ArrayList<Noticia>();
 
     private TextView mRssFeed;
+    ListView lista;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_feed_noticias);
 
+
+        lista = (ListView) findViewById(R.id.listaNoticias);
 
         //Navigation Drawer part
 
@@ -59,52 +64,11 @@ public class FeedNoticiasActivity extends AppCompatActivity
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
+
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-
-    public View onCreateView(
-            LayoutInflater inflater,
-            ViewGroup container,
-            Bundle savedInstanceState) {
-
-        View rootView = inflater.inflate(R.layout.noticia_layout, container, false);
-        mRssFeed = (TextView) rootView.findViewById(R.id.rss_feed);
-        return rootView;
-    }
-
-
-        //Feed part
-
-        public void onStart() {
-            super.onStart();
-            InputStream in = null;
-            try {
-                URL url = new URL("http://www.americadenatal.com.br/noticias.rss");
-                HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-                in = conn.getInputStream();
-                ByteArrayOutputStream out = new ByteArrayOutputStream();
-                byte[] buffer = new byte[1024];
-                for (int count; (count = in.read(buffer)) != -1; ) {
-                    out.write(buffer, 0, count);
-                }
-                byte[] response = out.toByteArray();
-                String rssFeed = new String(response, "UTF-8");
-                mRssFeed.setText(rssFeed);
-            } catch (IOException e) {
-                e.printStackTrace();
-            } finally {
-                if (in != null) {
-                    try {
-                        in.close();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-        }
-
-        ListView lista = (ListView) findViewById(R.id.listaNoticias);
+        // Feed part
 
         adaptadorLista = new NoticiaAdapter(this, noticias);
 
@@ -126,16 +90,66 @@ public class FeedNoticiasActivity extends AppCompatActivity
             }
         });
 
-
         // Temporário enquanto não tem notícias de verdade
-        /*for(int i = 0; i < 10; i++) {
+        for(int i = 0; i < 10; i++) {
             noticias.add(new Noticia());
         }
 
         adaptadorLista.notifyDataSetChanged();
 
+//        URL url1 = null;
+//        try {
+//            url1 = new URL("http://www.americadenatal.com.br/noticias.rss");
+//        } catch (MalformedURLException e) {
+//            e.printStackTrace();
+//        }
+//        new ReadsRSS().execute(url1);
+    }
 
-    }*/
+
+//    public View onCreateView(
+//            LayoutInflater inflater,
+//            ViewGroup container,
+//            Bundle savedInstanceState) {
+//
+//        View rootView = inflater.inflate(R.layout.noticia_layout, container, false);
+//        mRssFeed = (TextView) rootView.findViewById(R.id.rss_feed);
+//        return rootView;
+//    }
+
+
+
+//    private class ReadsRSS extends AsyncTask<URL, Void, Long> {
+//        protected Long doInBackground(URL... urls) {
+//            InputStream in = null;
+//            try {
+//                HttpURLConnection conn = (HttpURLConnection) urls[0].openConnection();
+//                in = conn.getInputStream();
+//                ByteArrayOutputStream out = new ByteArrayOutputStream();
+//                byte[] buffer = new byte[1024];
+//                for (int count; (count = in.read(buffer)) != -1; ) {
+//                    out.write(buffer, 0, count);
+//                }
+//                byte[] response = out.toByteArray();
+//                String rssFeed = new String(response, "UTF-8");
+//
+//                mRssFeed.setText(rssFeed);
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            } finally {
+//                if (in != null) {
+//                    try {
+//                        in.close();
+//                    } catch (IOException e) {
+//                        e.printStackTrace();
+//                    }
+//                }
+//            }
+//            return null;
+//        }
+//    }
+
+
 
     @Override
     public void onBackPressed() {
