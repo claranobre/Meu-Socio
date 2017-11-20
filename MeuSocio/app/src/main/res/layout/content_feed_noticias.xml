@@ -14,23 +14,27 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
+        android:orientation="horizontal"
         android:elevation="20dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="Feed de Notícias"
-            android:textColor="@android:color/background_light"
-            android:textSize="20dp"/>
-
 
         <ImageView
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:src="@drawable/logo_america"
-            android:layout_gravity="center"/>
+            android:layout_gravity="center"
+            android:paddingLeft="5dp"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:paddingLeft="10dp"
+            android:text="Feed de Notícias"
+            android:textColor="@android:color/background_light"
+            android:textSize="20dp"/>
+
+
     </LinearLayout>
 
     <LinearLayout
