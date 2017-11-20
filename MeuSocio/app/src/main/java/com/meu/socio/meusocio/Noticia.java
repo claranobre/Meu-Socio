@@ -39,7 +39,7 @@ public class Noticia implements Serializable{
     }
 
     public void setTexto(String texto) {
-        this.texto = texto;
+        this.texto = html2text(texto);
     }
 
     public String getData() {
@@ -58,8 +58,7 @@ public class Noticia implements Serializable{
         this.id = id;
     }
 
-    @Override
-    public String toString() {
-        return this.getTitulo();
+    public static String html2text(String html) {
+        return android.text.Html.fromHtml(html).toString();
     }
 }
