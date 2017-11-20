@@ -25,8 +25,8 @@ public class RssReader extends AsyncTask<Void, Void, Void>{
     private Context context; // Contexto do FeedNoticiasActivity
     private String address; // Link do RSS
     private NoticiaAdapter adapter; // Adapter das noticias para poder atualizar o feed
+    private ArrayList<Noticia> noticias; // Array que armazena as notícias
     URL url;
-    ArrayList<Noticia> noticias; // Array que armazena as notícias
 
 
 
@@ -88,9 +88,8 @@ public class RssReader extends AsyncTask<Void, Void, Void>{
 
 
     /*
-    Quando todos os dados são processados, atualiza
-    a tela usando o adapter passado do feedNoticias
-
+        Quando todos os dados são processados, atualiza
+        a tela usando o adapter passado do feedNoticias
      */
     @Override
     protected void onPostExecute(Void aVoid) {
@@ -102,7 +101,7 @@ public class RssReader extends AsyncTask<Void, Void, Void>{
 
 
     /*
-    Armazena os dados na notícia
+        Armazena os dados na notícia
      */
     private void contentFiller(Node node, Noticia noticia) {
         if(node.getNodeName().equalsIgnoreCase("title")) {
@@ -118,7 +117,7 @@ public class RssReader extends AsyncTask<Void, Void, Void>{
     }
 
     /*
-    Lê os dados do RSS e passa para um Document
+        Lê os dados do RSS e passa para um Document
      */
     private Document getData() {
         try {
