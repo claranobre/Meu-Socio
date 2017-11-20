@@ -2,56 +2,68 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/colorBackground">
 
-    <ImageView
+    <ScrollView
         android:layout_width="wrap_content"
-        android:layout_height="282dp"
-        android:src="@drawable/futebol"/>
+        android:layout_height="wrap_content">
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:paddingLeft="10dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/tituloDetalhe"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@+id/label"
-            android:textColor="@android:color/black"
-            android:textSize="26dp"
-            android:paddingBottom="20dp"
-            android:paddingTop="5dp"
-            android:layout_gravity="center">
-        </TextView>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="282dp"
+                android:src="@drawable/futebol"/>
 
-        <TextView
-            android:id="@+id/texto"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ellipsize="end"
-            android:text="@+id/label"
-            android:textSize="15dp"
-            android:paddingBottom="15dp">
-        </TextView>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingLeft="10dp">
 
-        <TextView
-            android:id="@+id/postagemDetalhe"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@+id/label"
-            android:textSize="10dp"
-            android:paddingBottom="15dp">
-        </TextView>
+                <TextView
+                    android:id="@+id/tituloDetalhe"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@+id/label"
+                    android:textColor="@android:color/black"
+                    android:textSize="26dp"
+                    android:paddingBottom="20dp"
+                    android:paddingTop="5dp"
+                    android:layout_gravity="center">
+                </TextView>
 
-        <Button
-            android:id="@+id/voltar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@android:color/darker_gray"
-            android:onClick="voltar"
-            android:text="Voltar"/>
-    </LinearLayout>
+                <TextView
+                    android:id="@+id/texto"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:text="@+id/label"
+                    android:textSize="15dp"
+                    android:paddingBottom="15dp">
+                </TextView>
+
+                <TextView
+                    android:id="@+id/postagemDetalhe"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@+id/label"
+                    android:textSize="10dp"
+                    android:paddingBottom="15dp">
+                </TextView>
+
+                <Button
+                    android:id="@+id/voltar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/darker_gray"
+                    android:onClick="voltar"
+                    android:text="Voltar"/>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>

@@ -15,27 +15,38 @@ public class Noticia implements Serializable{
 
     private String titulo;
     private String texto;
-    private Date data;
+    private String data;
     private int id;
 
     public Noticia() {
         super();
         this.titulo = "Título da Notícia";
         this.texto = "[ Conteúdo do texto ]";
-        this.data = new Date();
+        this.data = "data";
         this.id = ++idCount;
     }
-
 
     public String getTitulo() {
         return titulo;
     }
 
-    public Date getData() {
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+
+    public String getTexto() {
+        return texto;
+    }
+
+    public void setTexto(String texto) {
+        this.texto = texto;
+    }
+
+    public String getData() {
         return data;
     }
 
-    public void setData(Date data) {
+    public void setData(String data) {
         this.data = data;
     }
 
@@ -47,7 +58,8 @@ public class Noticia implements Serializable{
         this.id = id;
     }
 
-    public String getTexto() {
-        return texto;
+    @Override
+    public String toString() {
+        return this.getTitulo();
     }
 }

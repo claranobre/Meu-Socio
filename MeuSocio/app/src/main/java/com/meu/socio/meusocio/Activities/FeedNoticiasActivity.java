@@ -1,7 +1,6 @@
 package com.meu.socio.meusocio.Activities;
 
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentTransaction;
@@ -10,49 +9,38 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import com.meu.socio.meusocio.Noticia;
 import com.meu.socio.meusocio.NoticiaAdapter;
 import com.meu.socio.meusocio.R;
-
-import org.xmlpull.v1.XmlPullParser;
-import org.xmlpull.v1.XmlPullParserException;
-
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
+import com.meu.socio.meusocio.RssReader;
 
 public class FeedNoticiasActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private NoticiaAdapter adaptadorLista;
-    ArrayList<Noticia> noticias = new ArrayList<Noticia>();
-
-    private TextView mRssFeed;
     ListView lista;
+    RssReader rssReader; // Objeto do leitor de RSS
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_feed_noticias);
 
+        rssReader = new RssReader(this); // Instancia passando pro construtor esse context
+        rssReader.execute(); // Inicia a AsyncTask
 
         lista = (ListView) findViewById(R.id.listaNoticias);
 
-        //Navigation Drawer part
+        /*
+         *  Navigation Drawer part
+         */
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -68,17 +56,24 @@ public class FeedNoticiasActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        // Feed part
+        /*
+         *  Feed part
+          */
 
-        adaptadorLista = new NoticiaAdapter(this, noticias);
+        // Inicia o Adapter passando a lista de notícias do RssReader
+        adaptadorLista = new NoticiaAdapter(this, rssReader.getNoticias());
+
+        // Passa adaptadorLista para o rssReader poder atualizar a tela quando carregar os links
+        rssReader.setAdapter(adaptadorLista);
 
         lista.setAdapter(adaptadorLista);
 
+        // Aguardando clique em alguma notícia para iniciar a activity
         lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> adapter, View view,
                                     int position, long id) {
 
-                Noticia noticiaSelecionada = noticias.get(position);
+                Noticia noticiaSelecionada = rssReader.getNoticias().get(position);
 
                 Intent acao = new Intent(FeedNoticiasActivity.this,
                         NoticiaDetalheActivity.class);
@@ -90,66 +85,9 @@ public class FeedNoticiasActivity extends AppCompatActivity
             }
         });
 
-        // Temporário enquanto não tem notícias de verdade
-        for(int i = 0; i < 10; i++) {
-            noticias.add(new Noticia());
-        }
-
+        // Atualiza os dados do Feed
         adaptadorLista.notifyDataSetChanged();
-
-//        URL url1 = null;
-//        try {
-//            url1 = new URL("http://www.americadenatal.com.br/noticias.rss");
-//        } catch (MalformedURLException e) {
-//            e.printStackTrace();
-//        }
-//        new ReadsRSS().execute(url1);
     }
-
-
-//    public View onCreateView(
-//            LayoutInflater inflater,
-//            ViewGroup container,
-//            Bundle savedInstanceState) {
-//
-//        View rootView = inflater.inflate(R.layout.noticia_layout, container, false);
-//        mRssFeed = (TextView) rootView.findViewById(R.id.rss_feed);
-//        return rootView;
-//    }
-
-
-
-//    private class ReadsRSS extends AsyncTask<URL, Void, Long> {
-//        protected Long doInBackground(URL... urls) {
-//            InputStream in = null;
-//            try {
-//                HttpURLConnection conn = (HttpURLConnection) urls[0].openConnection();
-//                in = conn.getInputStream();
-//                ByteArrayOutputStream out = new ByteArrayOutputStream();
-//                byte[] buffer = new byte[1024];
-//                for (int count; (count = in.read(buffer)) != -1; ) {
-//                    out.write(buffer, 0, count);
-//                }
-//                byte[] response = out.toByteArray();
-//                String rssFeed = new String(response, "UTF-8");
-//
-//                mRssFeed.setText(rssFeed);
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            } finally {
-//                if (in != null) {
-//                    try {
-//                        in.close();
-//                    } catch (IOException e) {
-//                        e.printStackTrace();
-//                    }
-//                }
-//            }
-//            return null;
-//        }
-//    }
-
-
 
     @Override
     public void onBackPressed() {
@@ -189,19 +127,16 @@ public class FeedNoticiasActivity extends AppCompatActivity
 
         switch (id) {
             case R.id.loginID:
-//                fragment = new LoginFragment();
                 Intent intentLogin = new Intent(FeedNoticiasActivity.this,
                         LoginActivity.class);
                 startActivity(intentLogin);
                 break;
             case R.id.cadastroID:
-//                fragment = new CadastroFragment();
                 Intent intentCadastro = new Intent(FeedNoticiasActivity.this,
                         CadastroActivity.class);
                 startActivity(intentCadastro);
                 break;
             case R.id.parceirosID:
-//                fragment = new CadastroFragment();
                 Intent intentParceiro = new Intent(FeedNoticiasActivity.this,
                         ParceirosActivity.class);
                 startActivity(intentParceiro);
@@ -227,94 +162,5 @@ public class FeedNoticiasActivity extends AppCompatActivity
         escolheTela(id);
 
         return true;
-    }
-
-    private List<String> readRss(XmlPullParser parser)
-            throws XmlPullParserException, IOException {
-        List<String> items = new ArrayList<>();
-        parser.require(XmlPullParser.START_TAG, null, "rss");
-        while (parser.next() != XmlPullParser.END_TAG) {
-            if (parser.getEventType() != XmlPullParser.START_TAG) {
-                continue;
-            }
-            String name = parser.getName();
-            if (name.equals("channel")) {
-                items.addAll(readChannel(parser));
-            } else {
-                skip(parser);
-            }
-        }
-        return items;
-    }
-
-    private List<String> readChannel(XmlPullParser parser)
-            throws IOException, XmlPullParserException {
-        List<String> items = new ArrayList<>();
-        parser.require(XmlPullParser.START_TAG, null, "channel");
-        while (parser.next() != XmlPullParser.END_TAG) {
-            if (parser.getEventType() != XmlPullParser.START_TAG) {
-                continue;
-            }
-            String name = parser.getName();
-            if (name.equals("item")) {
-                items.add(readItem(parser));
-            } else {
-                skip(parser);
-            }
-        }
-        return items;
-    }
-    private String readItem(XmlPullParser parser)
-            throws XmlPullParserException, IOException {
-        String result = null;
-        parser.require(XmlPullParser.START_TAG, null, "item");
-        while (parser.next() != XmlPullParser.END_TAG) {
-            if (parser.getEventType() != XmlPullParser.START_TAG) {
-                continue;
-            }
-            String name = parser.getName();
-            if (name.equals("title")) {
-                result = readTitle(parser);
-            } else {
-                skip(parser);
-            }
-        }
-        return result;
-    }
-
-    private String readTitle(XmlPullParser parser)
-            throws IOException, XmlPullParserException {
-        parser.require(XmlPullParser.START_TAG, null, "title");
-        String title = readText(parser);
-        parser.require(XmlPullParser.END_TAG, null, "title");
-        return title;
-    }
-
-    private String readText(XmlPullParser parser)
-            throws IOException, XmlPullParserException {
-        String result = "";
-        if (parser.next() == XmlPullParser.TEXT) {
-            result = parser.getText();
-            parser.nextTag();
-        }
-        return result;
-    }
-
-    private void skip(XmlPullParser parser)
-            throws XmlPullParserException, IOException {
-        if (parser.getEventType() != XmlPullParser.START_TAG) {
-            throw new IllegalStateException();
-        }
-        int depth = 1;
-        while (depth != 0) {
-            switch (parser.next()) {
-                case XmlPullParser.END_TAG:
-                    depth--;
-                    break;
-                case XmlPullParser.START_TAG:
-                    depth++;
-                    break;
-            }
-        }
     }
 }

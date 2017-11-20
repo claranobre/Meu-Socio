@@ -33,7 +33,7 @@ public class NoticiaDetalheActivity extends Activity {
 
         textAutor.setText(noticia.getTitulo());
         textConteudo.setText(noticia.getTexto());
-        textData.setText(noticia.getData().toGMTString());
+        textData.setText(noticia.getData());
 
     }
 
