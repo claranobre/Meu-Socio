@@ -123,8 +123,6 @@ public class FeedNoticiasActivity extends AppCompatActivity
 
 
     public void escolheTela(int id) {
-        android.support.v4.app.Fragment fragment = null;
-
         switch (id) {
             case R.id.loginID:
                 Intent intentLogin = new Intent(FeedNoticiasActivity.this,
@@ -147,10 +145,6 @@ public class FeedNoticiasActivity extends AppCompatActivity
                 startActivity(intentTabela);
                 break;
         }
-
-        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        ft.replace(R.id.content_feed_noticias, fragment, "Fragmento");
-        ft.commit();
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
