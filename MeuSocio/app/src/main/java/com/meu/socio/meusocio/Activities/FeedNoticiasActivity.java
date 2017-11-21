@@ -23,7 +23,7 @@ import com.meu.socio.meusocio.RssReader;
 public class FeedNoticiasActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    private NoticiaAdapter adaptadorLista;
+    NoticiaAdapter adaptadorLista;
     ListView lista;
     RssReader rssReader; // Objeto do leitor de RSS
 
@@ -148,18 +148,14 @@ public class FeedNoticiasActivity extends AppCompatActivity
                 break;
         }
 
-        if(fragment != null) {
-            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-            ft.replace(R.id.content_feed_noticias, fragment, "Fragmento");
-            ft.commit();
-        }
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.content_feed_noticias, fragment, "Fragmento");
+        ft.commit();
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
     }
 
-
-    @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         int id = item.getItemId();

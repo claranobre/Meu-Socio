@@ -22,7 +22,7 @@ public class Noticia implements Serializable{
         super();
         this.titulo = "Título da Notícia";
         this.texto = "[ Conteúdo do texto ]";
-        this.data = "data";
+        this.data = "01/01/01";
         this.id = ++idCount;
     }
 
@@ -39,7 +39,7 @@ public class Noticia implements Serializable{
     }
 
     public void setTexto(String texto) {
-        this.texto = html2text(texto);
+        this.texto = htmlToText(texto);
     }
 
     public String getData() {
@@ -58,7 +58,12 @@ public class Noticia implements Serializable{
         this.id = id;
     }
 
-    public static String html2text(String html) {
-        return android.text.Html.fromHtml(html).toString();
+
+    /*
+        Método que tira todos os elementos HTML e retorna apenas uma string com o texto
+     */
+    public static String htmlToText(String html) {
+        return android.text.Html.fromHtml(html).toString().replace('\n', (char) 32)
+                .replace((char) 160, (char) 32).replace((char) 65532, (char) 32).trim();
     }
 }

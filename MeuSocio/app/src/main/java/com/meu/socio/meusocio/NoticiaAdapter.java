@@ -39,6 +39,7 @@ public class NoticiaAdapter extends ArrayAdapter<Noticia> {
         TextView textAutor = rowView.findViewById(R.id.titulo);
         TextView textConteudo = rowView.findViewById(R.id.texto);
 
+
         Noticia noticia = noticias.get(position);
 
         textAutor.setText(noticia.getTitulo());
