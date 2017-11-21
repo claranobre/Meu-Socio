@@ -14,6 +14,10 @@
             android:id="@+id/parceirosID"
             android:icon="@drawable/ic_account_circle_black_24dp"
             android:title="Parceiros" />
+        <item
+            android:id="@+id/tabelaID"
+            android:icon="@drawable/ic_account_circle_black_24dp"
+            android:title="Tabela" />
 
     </group>
 

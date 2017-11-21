@@ -141,6 +141,11 @@ public class FeedNoticiasActivity extends AppCompatActivity
                         ParceirosActivity.class);
                 startActivity(intentParceiro);
                 break;
+            case R.id.tabelaID:
+                Intent intentTabela= new Intent(FeedNoticiasActivity.this,
+                        TabelaActivity.class);
+                startActivity(intentTabela);
+                break;
         }
 
         if(fragment != null) {

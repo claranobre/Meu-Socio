@@ -40,7 +40,11 @@
             android:label="@string/title_activity_lista_usuarios"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Activities.CadastroActivity" />
-        <activity android:name=".Activities.ParceirosActivity"></activity>
+        <activity android:name=".Activities.ParceirosActivity" />
+        <activity
+            android:name=".Activities.TabelaActivity"
+            android:label="@string/title_activity_tabela"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
