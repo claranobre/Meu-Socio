@@ -26,8 +26,6 @@ public class TabelaActivity extends AppCompatActivity {
         tabelaWeb = (WebView) findViewById(R.id.tabela_web);
         tabelaWeb.loadUrl("http://globoesporte.globo.com/futebol/brasileirao-serie-d/#/classificacao-e-jogos");
         tabelaWeb.setWebViewClient(new WebViewClient());
-        WebSettings webSettings = tabelaWeb.getSettings();
-        webSettings.setJavaScriptEnabled(true);
 
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
