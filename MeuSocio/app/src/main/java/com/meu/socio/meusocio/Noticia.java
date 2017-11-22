@@ -62,7 +62,7 @@ public class Noticia implements Serializable{
     /*
         Método que tira todos os elementos HTML e retorna apenas uma string com o texto
      */
-    public static String htmlToText(String html) {
+    private static String htmlToText(String html) {
         return android.text.Html.fromHtml(html).toString().replace('\n', (char) 32)
                 .replace((char) 160, (char) 32).replace((char) 65532, (char) 32).trim();
     }
