@@ -1,4 +1,4 @@
-package com.meu.socio.meusocio;
+package com.meu.socio.meusocio.Model;
 
 import java.io.Serializable;
 import java.util.Date;

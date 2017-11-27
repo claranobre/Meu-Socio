@@ -17,9 +17,9 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthException;
 import com.meu.socio.meusocio.R;
-import com.meu.socio.meusocio.Usuario;
+import com.meu.socio.meusocio.Model.Usuario;
 
-import DAO.CadastroDAO;
+import com.meu.socio.meusocio.DAO.CadastroDAO;
 
 public class CadastroActivity extends AppCompatActivity {
 

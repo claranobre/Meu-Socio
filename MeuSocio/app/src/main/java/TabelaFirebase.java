@@ -1,8 +1,6 @@
-package DAO;
+package com.meu.socio.meusocio.DAO;
 
 import android.support.v4.widget.DrawerLayout;
-
-import com.google.firebase.database.DatabaseReference;
 
 import java.util.ArrayList;
 

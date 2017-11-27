@@ -1,62 +1,51 @@
-package com.meu.socio.meusocio;
+package com.meu.socio.meusocio.Model;
 
 import android.content.Context;
-import android.os.AsyncTask;
+
+import com.meu.socio.meusocio.Model.Noticia;
+import com.meu.socio.meusocio.NoticiaAdapter;
+import com.meu.socio.meusocio.Util.RssExtractor;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.util.ArrayList;
-
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
 
 /**
  * Created by Pedro Neto on 11/19/2017.
  */
 
-public class RssReader extends AsyncTask<Void, Void, Void>{
+public class Reader {
 
     private Context context; // Contexto do FeedNoticiasActivity
-    private String address; // Link do RSS
     private NoticiaAdapter adapter; // Adapter das noticias para poder atualizar o feed
     private ArrayList<Noticia> noticias; // Array que armazena as notícias
-    URL url;
+    private RssExtractor rssExtractor;
 
 
 
     /*
      *  Construtor recebendo o contexto e iniciando as coisas
      */
-    public RssReader(Context context) {
+    public Reader(Context context) {
         this.context = context;
-        this.address = "http://www.americadenatal.com.br/noticias.rss";
         this.noticias = new ArrayList<>();
+        rssExtractor = new RssExtractor(this);
     }
 
     /*
-     *  Método que roda quando a thread inicia
+     *  Método que executa a AsyncTask
      */
-    @Override
-    protected Void doInBackground(Void... voids) {
-
-        // Coleta os dados do RSS
-        Document rssData = getData();
-
-        processXml(rssData);
-
-        return null;
+    public void executeExtractor() {
+        rssExtractor.execute();
     }
 
     /*
         Processa os dados do Document gerado
      */
-    private void processXml(Document data) {
+    public void processData(Document data) {
         if(data != null) {
             Element root = data.getDocumentElement();
             Node channel = root.getChildNodes().item(1);
@@ -84,21 +73,8 @@ public class RssReader extends AsyncTask<Void, Void, Void>{
                 }
             }
         }
+        adapter.notifyDataSetChanged();
     }
-
-
-    /*
-        Quando todos os dados são processados, atualiza
-        a tela usando o adapter passado do feedNoticias
-     */
-    @Override
-    protected void onPostExecute(Void aVoid) {
-        super.onPostExecute(aVoid);
-
-        this.adapter.notifyDataSetChanged();
-
-    }
-
 
     /*
         Armazena os dados na notícia
@@ -115,32 +91,6 @@ public class RssReader extends AsyncTask<Void, Void, Void>{
         }
 
     }
-
-    /*
-        Lê os dados do RSS e passa para um Document
-     */
-    private Document getData() {
-        try {
-            // Informa a url do RSS
-            url = new URL(address);
-
-            // Abre a conexão
-            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-            connection.setRequestMethod("GET");
-            InputStream inputStream = connection.getInputStream();
-
-            // Cria o Document a partir do RSS
-            DocumentBuilderFactory builderFactory = DocumentBuilderFactory.newInstance();
-            DocumentBuilder builder = builderFactory.newDocumentBuilder();
-            Document xmlDocument = builder.parse(inputStream);
-
-            return xmlDocument;
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
-
 
     public ArrayList<Noticia> getNoticias() {
         return noticias;

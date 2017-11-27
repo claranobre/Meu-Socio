@@ -1,4 +1,4 @@
-package com.meu.socio.meusocio;
+package com.meu.socio.meusocio.Model;
 
 
 import java.util.ArrayList;
@@ -7,7 +7,7 @@ import java.util.ArrayList;
  * Created by clara on 9/20/17.
  */
 
-public class Cadastro extends Usuario{
+public class Cadastro extends Usuario {
     private static ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
 
     public static void addSocio(String id, String nome, String email, String telefone, String login, String senha){

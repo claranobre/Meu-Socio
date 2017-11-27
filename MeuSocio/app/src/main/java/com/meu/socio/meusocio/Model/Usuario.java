@@ -1,8 +1,8 @@
-package com.meu.socio.meusocio;
+package com.meu.socio.meusocio.Model;
 
 import com.google.firebase.database.Exclude;
 
-import DAO.CadastroDAO;
+import com.meu.socio.meusocio.DAO.CadastroDAO;
 
 /**
  * Created by clara on 9/20/17.

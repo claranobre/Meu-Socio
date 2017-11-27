@@ -7,7 +7,7 @@ import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.TextView;
 
-import com.meu.socio.meusocio.Noticia;
+import com.meu.socio.meusocio.Model.Noticia;
 import com.meu.socio.meusocio.R;
 
 /**

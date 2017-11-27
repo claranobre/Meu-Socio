@@ -6,15 +6,16 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 import com.meu.socio.meusocio.R;
+import com.meu.socio.meusocio.Util.TabelaWebViewExtractor;
 
 public class TabelaActivity extends AppCompatActivity {
 
     WebView tabelaWeb;
+    TabelaWebViewExtractor tabela;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,9 +24,8 @@ public class TabelaActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        tabelaWeb = (WebView) findViewById(R.id.tabela_web);
-        tabelaWeb.loadUrl("http://globoesporte.globo.com/futebol/brasileirao-serie-d/#/classificacao-e-jogos");
-        tabelaWeb.setWebViewClient(new WebViewClient());
+        tabela = new TabelaWebViewExtractor();
+        drawTabela(tabela.getTabela());
 
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -36,5 +36,11 @@ public class TabelaActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+    }
+
+    public void drawTabela(String link) {
+        tabelaWeb = (WebView) findViewById(R.id.tabela_web);
+        tabelaWeb.loadUrl(link);
+        tabelaWeb.setWebViewClient(new WebViewClient());
     }
 }

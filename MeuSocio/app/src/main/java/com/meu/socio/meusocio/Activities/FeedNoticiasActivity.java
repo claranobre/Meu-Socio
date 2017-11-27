@@ -14,17 +14,17 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-import com.meu.socio.meusocio.Noticia;
+import com.meu.socio.meusocio.Model.Noticia;
 import com.meu.socio.meusocio.NoticiaAdapter;
 import com.meu.socio.meusocio.R;
-import com.meu.socio.meusocio.RssReader;
+import com.meu.socio.meusocio.Model.Reader;
 
 public class FeedNoticiasActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     NoticiaAdapter adaptadorLista;
     ListView lista;
-    RssReader rssReader; // Objeto do leitor de RSS
+    Reader rssReader; // Objeto do leitor de RSS
 
 
     @Override
@@ -32,8 +32,8 @@ public class FeedNoticiasActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_feed_noticias);
 
-        rssReader = new RssReader(this); // Instancia passando pro construtor esse context
-        rssReader.execute(); // Inicia a AsyncTask
+        rssReader = new Reader(this); // Instancia passando pro construtor esse context
+        rssReader.executeExtractor(); // Inicia o Reader
 
         lista = (ListView) findViewById(R.id.listaNoticias);
 
