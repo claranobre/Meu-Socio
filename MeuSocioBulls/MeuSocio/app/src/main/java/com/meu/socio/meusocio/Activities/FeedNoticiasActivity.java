@@ -26,7 +26,6 @@ public class FeedNoticiasActivity extends AppCompatActivity
     ListView lista;
     Reader rssReader; // Objeto do leitor de RSS
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +35,7 @@ public class FeedNoticiasActivity extends AppCompatActivity
         rssReader.executeExtractor(); // Inicia o Reader
 
         lista = (ListView) findViewById(R.id.listaNoticias);
+
 
         /*
          *  Navigation Drawer part
