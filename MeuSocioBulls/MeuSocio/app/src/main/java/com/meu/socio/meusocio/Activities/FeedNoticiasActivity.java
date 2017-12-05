@@ -1,5 +1,6 @@
 package com.meu.socio.meusocio.Activities;
 
+import android.app.Notification;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -86,6 +87,14 @@ public class FeedNoticiasActivity extends AppCompatActivity
 
         // Atualiza os dados do Feed
         adaptadorLista.notifyDataSetChanged();
+
+        Notification notificacoes = new Notification.Builder(this)
+                .setContentTitle("PopUp ") //+ sender.toString())
+                .setContentText(Noticia.NOTICIA_INFO)
+                .setSmallIcon(R.drawable.ic_stat_pop_up)
+                //.setLargeIcon(aBitmap)
+                .build();
+
     }
 
     @Override
