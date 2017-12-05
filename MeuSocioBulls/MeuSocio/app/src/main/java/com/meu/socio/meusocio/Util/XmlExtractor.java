@@ -14,14 +14,13 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
 /**
- * Created by Pedro Neto on 11/24/2017.
+ * Created by Clara Nobre on 04/12/2017.
  */
 
-public class RssExtractor extends AsyncTask<Void, Void, Document> implements DataExtractor {
-
+public class XmlExtractor extends AsyncTask<Void, Void, Document> implements DataExtractor {
     Reader reader;
     URL url;
-    String address = "";
+    String address = "http://www.nba.com/bulls/rss.xml";
 
     public RssExtractor(Reader obj) {
         reader = obj;
