@@ -43,8 +43,7 @@
         <activity android:name=".Activities.ParceirosActivity" />
         <activity
             android:name=".Activities.TabelaActivity"
-            android:label="@string/title_activity_tabela"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:label="@string/title_activity_tabela"></activity>
     </application>
 
 </manifest>
