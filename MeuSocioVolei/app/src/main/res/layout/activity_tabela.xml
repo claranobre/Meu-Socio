@@ -5,8 +5,18 @@
     android:orientation="vertical">
 
         <de.codecrafters.tableview.TableView
+            android:id="@+id/tableview"
+            android:layout_width="wrap_content"
+            android:layout_height="438dp" />
+
+        <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/tableview"/>
+            android:text="share"
+            android:background="@color/colorPrimary"
+            android:id="@+id/btn_share"
+            android:layout_marginTop="7dp"
+            android:elevation="50dp"
+            android:textColor="#FFFF"/>
 
 </LinearLayout>
