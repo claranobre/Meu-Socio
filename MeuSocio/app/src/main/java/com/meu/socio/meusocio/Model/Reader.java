@@ -2,7 +2,6 @@ package com.meu.socio.meusocio.Model;
 
 import android.content.Context;
 
-import com.meu.socio.meusocio.Model.Noticia;
 import com.meu.socio.meusocio.NoticiaAdapter;
 import com.meu.socio.meusocio.Util.RssExtractor;
 
