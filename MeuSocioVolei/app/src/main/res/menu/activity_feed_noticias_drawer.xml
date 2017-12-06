@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/loginID"
+            android:icon="@drawable/ic_account_circle_black_24dp"
+            android:title="Login" />
+        <item
+            android:id="@+id/cadastroID"
+            android:icon="@drawable/ic_add_circle_outline_black_24dp"
+            android:title="Cadastro" />
+        <item
+            android:id="@+id/parceirosID"
+            android:icon="@drawable/ic_account_circle_black_24dp"
+            android:title="Parceiros" />
+        <item
+            android:id="@+id/tabelaID"
+            android:icon="@drawable/tabela_icone"
+            android:title="Tabela" />
+
+    </group>
+
+</menu>

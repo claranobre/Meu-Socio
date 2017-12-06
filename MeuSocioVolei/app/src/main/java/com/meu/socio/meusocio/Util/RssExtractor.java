@@ -21,7 +21,7 @@ public class RssExtractor extends AsyncTask<Void, Void, Document> implements Dat
 
     Reader reader;
     URL url;
-    String address = "http://www.nba.com/bulls/rss.xml";
+    String address = "http://globoesporte.globo.com/ESP/Noticia/Rss/0,,AS0-4435,00.xml";
 
     public RssExtractor(Reader obj) {
         reader = obj;

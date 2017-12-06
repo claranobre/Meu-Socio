@@ -4,7 +4,7 @@ package com.meu.socio.meusocio.Util;
  * Created by Pedro Neto on 11/27/2017.
  */
 
-public class    TabelaJSonExtractor implements TabelaExtractor {
+public class TabelaJSonExtractor implements TabelaExtractor {
 
     private String JSon;
 

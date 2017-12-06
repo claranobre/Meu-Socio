@@ -1,0 +1,76 @@
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        tools:context="com.meu.socio.meusocio.Activities.ParceirosActivity">
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Parceiros"
+            android:textSize="30dp"
+            android:layout_marginTop="10dp"
+            android:textAlignment="center"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Title"
+            />
+
+        <ImageView
+            android:layout_marginTop="5dp"
+            android:id="@+id/constelpng"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/constel" />
+
+        <ImageView
+            android:layout_marginTop="5dp"
+            android:id="@+id/unimedpng"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/unimed" />
+
+        <ImageView
+            android:layout_marginTop="5dp"
+            android:id="@+id/brahmapng"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/brahma" />
+
+        <ImageView
+            android:layout_marginTop="5dp"
+            android:id="@+id/bomdiapng"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/bomdia" />
+
+        <ImageView
+            android:layout_marginTop="5dp"
+            android:id="@+id/vitaforpng"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/vitafor" />
+
+        <ImageView
+            android:layout_marginTop="5dp"
+            android:id="@+id/kanxapng"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/kanxa" />
+
+        <ImageView
+            android:layout_marginTop="5dp"
+            android:id="@+id/doisapng"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/doisa" />
+
+    </LinearLayout>
+</ScrollView>
