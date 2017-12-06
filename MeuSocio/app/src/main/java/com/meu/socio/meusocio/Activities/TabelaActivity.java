@@ -1,46 +1,61 @@
 package com.meu.socio.meusocio.Activities;
 
+import android.graphics.Color;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.view.View;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.meu.socio.meusocio.Model.TimeTabela;
 import com.meu.socio.meusocio.R;
-import com.meu.socio.meusocio.Util.TabelaWebViewExtractor;
+import com.meu.socio.meusocio.Util.TabelaExtractor;
+import com.meu.socio.meusocio.Util.TabelaJSonExtractor;
+
+import java.util.Arrays;
+import java.util.List;
+
+import de.codecrafters.tableview.TableView;
+import de.codecrafters.tableview.toolkit.SimpleTableDataAdapter;
+import de.codecrafters.tableview.toolkit.SimpleTableHeaderAdapter;
 
 public class TabelaActivity extends AppCompatActivity {
 
-    WebView tabelaWeb;
-    TabelaWebViewExtractor tabela;
+    TabelaExtractor tabela;
+    static String[][] timess;
+    static String[] headers={"Posição", "Time"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tabela);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
 
-        tabela = new TabelaWebViewExtractor();
+        tabela = new TabelaJSonExtractor();
         drawTabela(tabela.getTabela());
 
+        final TableView<String[]> tableView = findViewById(R.id.tableview);
+        //SET PROP
+        tableView.setHeaderBackgroundColor(Color.parseColor("#b71c1c"));
+        tableView.setHeaderAdapter(new SimpleTableHeaderAdapter(this,headers));
+        tableView.setColumnCount(2);
+        tableView.setHeaderElevation(10);
+        tableView.setDataAdapter(new SimpleTableDataAdapter(this, timess));
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
     }
 
-    public void drawTabela(String link) {
-        tabelaWeb = (WebView) findViewById(R.id.tabela_web);
-        tabelaWeb.loadUrl(link);
-        tabelaWeb.setWebViewClient(new WebViewClient());
+    private void drawTabela(String json) {
+        GsonBuilder builder = new GsonBuilder();
+        Gson gson = builder.create();
+
+        List<TimeTabela> times = Arrays.asList(gson.fromJson(json, TimeTabela[].class));
+
+        timess = new String[times.size()][2];
+
+        for(int i =0; i < times.size(); i++) {
+            TimeTabela team = times.get(i);
+
+            timess[i][0] = team.getPosicao();
+            timess[i][1] = team.getNome();
+        }
+
     }
 }

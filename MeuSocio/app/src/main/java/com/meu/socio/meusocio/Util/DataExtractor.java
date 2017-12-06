@@ -10,4 +10,5 @@ import org.w3c.dom.Document;
 
 public interface DataExtractor {
     public abstract Document getData();
+
 }
